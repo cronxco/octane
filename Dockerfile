@@ -19,7 +19,9 @@ RUN install-php-extensions \
     intl \
     zip \
     bcmath \
-    mbstring
+    mbstring \
+    exif \
+    gd
 
 # Install Composer globally
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer

@@ -45,4 +45,5 @@ ENV SERVER_NAME=":80"
 CMD ["php", "artisan", "octane:frankenphp", \
      "--host=0.0.0.0", \
      "--port=80", \
+     "--watch", \
      "--max-requests=250"]

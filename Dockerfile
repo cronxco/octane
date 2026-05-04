@@ -33,7 +33,8 @@ RUN mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini"
 RUN echo "opcache.enable=1" >> "$PHP_INI_DIR/php.ini" && \
     echo "opcache.validate_timestamps=0" >> "$PHP_INI_DIR/php.ini" && \
     echo "opcache.memory_consumption=256" >> "$PHP_INI_DIR/php.ini" && \
-    echo "opcache.max_accelerated_files=20000" >> "$PHP_INI_DIR/php.ini"
+    echo "opcache.max_accelerated_files=20000" >> "$PHP_INI_DIR/php.ini" && \
+    echo "memory_limit=512M" >> "$PHP_INI_DIR/php.ini"
 
 WORKDIR /var/www/spark/current
 
@@ -44,5 +45,4 @@ ENV SERVER_NAME=":80"
 CMD ["php", "artisan", "octane:frankenphp", \
      "--host=0.0.0.0", \
      "--port=80", \
-     "--workers=4", \
-     "--max-requests=500"]
+     "--max-requests=250"]
